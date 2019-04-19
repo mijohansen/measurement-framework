@@ -1,6 +1,5 @@
 Measurement Framework
 =======
-[![NPM Version][npm-image]][npm-url]
 ![Stability][stability-image]
 
 Collection of Javascript code to implement a browser based measurement
@@ -64,7 +63,6 @@ Internally these uses the MeasurementFramework class to hold state and
 to orcestrate between classes. This makes the package nice and tight.
 
 [npm-image]: https://img.shields.io/npm/v/measurement-framework.svg
-[npm-url]: https://npmjs.org/package/measurement-framework
 [stability-image]: https://img.shields.io/badge/stability-experimental-orange.svg
 [stability-url]: https://github.com/mijohansen/measurement-framework
 
