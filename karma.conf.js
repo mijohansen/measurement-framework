@@ -16,17 +16,16 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
 rollupConfig.plugins = [
   json(),
   resolve({
-    module: true, // Default: true
-    jsnext: true, // Default: false
-    main: true, // Default: true
-    browser: true, // Default: false
+    mainFields: [
+      ['jsnext', 'jsnext:main', true]
+    ],
     extensions: ['.js', '.json'], // Default: ['.js']
     preferBuiltins: true, // Default: true
-    modulesOnly: false, // Default: false
-    customResolveOptions: {}
+    modulesOnly: false,
+    browser: true, // Default: false
   }),
   commonjs(), // converts date-fns to ES modules
-  buble()
+  buble(),
 ]
 
 module.exports = function (config) {
@@ -42,7 +41,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: 'tests/*.js', watched: false }
+      { pattern: 'tests/*.js', watched: false },
     ],
 
     // list of files / patterns to exclude
@@ -51,7 +50,7 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'tests/*.js': ['rollup']
+      'tests/*.js': ['rollup'],
     },
 
     // rollup settings. See Rollup documentation
@@ -85,7 +84,7 @@ module.exports = function (config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
 
   })
 }

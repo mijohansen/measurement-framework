@@ -1,7 +1,7 @@
 import MeasurementFramework, { contentEngaged, userTrail } from '../index'
 import { greater, incrementEventValue } from '../lib/userTrail'
 
-describe('User Trail Test Script', function () {
+describe('User Trail Tests', function () {
   // The 'it' function of Jasmine defined an individual tests. The first argument is
   // a description of the tests that's appended to the module name. Because a module name
   // is typically a noun, like the name of the function being tested, the description for
@@ -20,7 +20,7 @@ describe('User Trail Test Script', function () {
       } else {
         return false
       }
-    }
+    },
   ])
   var initial_state
 
@@ -36,13 +36,13 @@ describe('User Trail Test Script', function () {
     expect(initial_state.funnelStage()).toEqual('Test Funnel Stage')
     expect(initial_state.userTrail()).toEqual({
       FirstTestEvent: 0,
-      SecondTestEvent: 0
+      SecondTestEvent: 0,
     })
     incrementEventValue(FIRST_TEST_EVENT)
     incrementEventValue(FIRST_TEST_EVENT)
     expect(initial_state.userTrail()).toEqual({
       FirstTestEvent: 2,
-      SecondTestEvent: 0
+      SecondTestEvent: 0,
     })
     expect(initial_state.funnelStage()).toEqual('Next Level Funnel Stage')
   })
@@ -53,14 +53,11 @@ describe('User Trail Test Script', function () {
   })
 
   it('should fire after X seconds', function (done) {
-    contentEngaged('My Content Was Engaged', 3, function (event) {
+    contentEngaged(3, function (event) {
       console.log(event)
       window.clearInterval(intervalID)
       done()
     })
-    // waitsFor(function () {
-    //    return contentEngagedFired
-    // }, 5000)
   })
 
   initial_state = MeasurementFramework.init()

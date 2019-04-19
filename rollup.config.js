@@ -30,9 +30,9 @@ module.exports = {
       'RMFBUILDTIME': new Date().toISOString()
     }),
     resolve({
-      module: true, // Default: true
-      jsnext: true, // Default: false
-      main: true, // Default: true
+      mainFields: [
+        ['jsnext', 'jsnext:main', true]
+      ],
       browser: true, // Default: false
       extensions: ['.js', '.json'], // Default: ['.js']
       preferBuiltins: true, // Default: true
